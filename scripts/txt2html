@@ -4,7 +4,7 @@ require 'rubygems'
 require 'redcloth'
 require 'syntax/convertors/html'
 require 'erb'
-require File.dirname(__FILE__) + '/../lib/clickatell/version.rb'
+require File.expand_path(File.dirname(__FILE__) + '/../lib/clickatell/version.rb')
 
 version  = Clickatell::VERSION::STRING
 download = 'http://rubyforge.org/projects/clickatell'
@@ -14,12 +14,12 @@ class Fixnum
     # teens
     return 'th' if (10..19).include?(self % 100)
     # others
-    case self % 10
-    when 1: return 'st'
-    when 2: return 'nd'
-    when 3: return 'rd'
-    else    return 'th'
-    end
+    return case self % 10
+           when 1 then 'st'
+           when 2 then 'nd'
+           when 3 then 'rd'
+           else 'th'
+           end
   end
 end
 

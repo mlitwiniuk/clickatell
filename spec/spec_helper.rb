@@ -1,8 +1,6 @@
 require 'rubygems'
-require 'spec'
-require 'mocha'
-require 'test/unit'
+require 'rspec'
 
-Spec::Runner.configure do |config|
-  config.mock_with :mocha
+RSpec.configure do |config|
+  config.mock_framework = :mocha
 end
