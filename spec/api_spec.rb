@@ -45,6 +45,12 @@ module Clickatell
       url = @command.with_params(:param_one => 'abc', :param_two => '123')
       url.should == URI.parse("http://api.clickatell.com/http/cmdname?param_one=abc&param_two=123")
     end
+
+    it "should use append unicode parameters with numeric value" do
+      Clickatell::API.api_service_host = ''
+      url = @command.with_params(:param_one => 'abc', :param_two => '123', :unicode => String.to_boolean_params(1))
+      url.should == URI.parse("http://api.clickatell.com/http/cmdname?param_one=abc&param_two=123&unicode=1")
+    end
   end
 
   describe "Secure API Command" do
