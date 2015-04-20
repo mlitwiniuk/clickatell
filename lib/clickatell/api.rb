@@ -88,7 +88,7 @@ module Clickatell
       valid_options.merge!(:climsgid => opts[:client_message_id]) if opts[:client_message_id]
       valid_options.merge!(:scheduled_time => opts[:scheduled_time]) if opts[:scheduled_time]
       if message_text.length > 160
-        valid_options.merge!(:concat => (message_text.length.to_f / 160).ceil)
+        valid_options.merge!(:concat => (CGI::escape(message_text).length.to_f / 160).ceil)
       end
       recipient = recipient.join(",")if recipient.is_a?(Array)
       response = execute_command('sendmsg', 'http',
