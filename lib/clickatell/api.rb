@@ -86,6 +86,7 @@ module Clickatell
       valid_options.merge!(:req_feat => '48') if valid_options[:from]
       valid_options.merge!(:mo => '1') if opts[:set_mobile_originated]
       valid_options.merge!(:climsgid => opts[:client_message_id]) if opts[:client_message_id]
+      valid_options.merge!(:scheduled_time => opts[:scheduled_time]) if opts[:scheduled_time]
       if message_text.length > 160
         valid_options.merge!(:concat => (message_text.length.to_f / 160).ceil)
       end

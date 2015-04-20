@@ -142,6 +142,12 @@ module Clickatell
       @api.send_message('4477791234567', 't'*180)
     end
 
+    it "should set the :scheduled_time parameter when provided" do
+      @executor.expects(:execute).with('sendmsg', 'http', has_entries(:scheduled_time => '1429492696')).returns(response = stub('response'))
+      Response.stubs(:parse).with(response).returns('ID' => 'message_id')
+      @api.send_message('4477791234567', 'hello world', :scheduled_time => '1429492696' )
+    end
+
     it "should set the callback flag to the number passed in the options hash" do
       @executor.expects(:execute).with('sendmsg', 'http', has_entry(:callback => 1)).returns(response=mock('response'))
       Response.stubs(:parse).with(response).returns('ID' => 'message_id')
