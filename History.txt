@@ -1,3 +1,6 @@
+== 0.9.1
+* Added support for SMS flash class 0, use option msg_type: 'SMS_FLASH' on api.send_message
+
 == 0.9
 * Added message concatenation support. Messages over 160 characters will be split in to multiple messages and the API concat parameter will be set; the concat parameter can also be set manually (Joshua Sierles, Martin Westin)
 
